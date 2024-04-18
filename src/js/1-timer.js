@@ -8,13 +8,14 @@ const LS_KEY = "show date";
 const inputEl = document.querySelector('#datetime-picker');
 const btnElStart = document.querySelector('button[data-start]');
 btnElStart.disabled = true;
-const dataDay = document.querySelector('[data-days]');
+const dataDays = document.querySelector('[data-days]');
 const dataHours = document.querySelector('[data-hours]');
 const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
 let userSelectedDate;
-userSelectedDate = btnElStart.ariaDisabled;
+let setIntervalId = null;
+userSelectedDate = btnElStart.disabled;
 
 const options = {
   enableTime: true,
@@ -52,13 +53,33 @@ flatpickr(inputEl, options);
 
 
 btnElStart.addEventListener('click', showCountdawn);
-function showCountdawn(event) {
-    console.log(event.target.dataset.start);
+function showCountdawn() {
+    btnElStart.disabled = true;
+     btnElStart.classList.add('not-show');
+    inputEl.disabled = true;
+    
+    
+    setIntervalId = setInterval(() => {
+        const currentDate = Date.now();
+        const differenceTime = userSelectedDate - currentDate;
+        startCountdawn(convertMs(differenceTime));
+        console.log(differenceTime);
+        if (differenceTime < 1000) {
+            clearInterval(setIntervalId); 
+            btnElStart.disabled = false;
+             btnElStart.classList.remove('not-show');
+            inputEl.disabled = false;
+        } 
+    }, 1000);
+};
+
+
+function startCountdawn({ days, hours, minutes, seconds }) {
+    dataDays.textContent = days;
+    dataHours.textContent = hours;
+    dataMinutes.textContent = minutes;
+    dataSeconds.textContent = seconds;
 }
-
-
-
-
 
 
 function addLeadingZero(value) {
@@ -72,10 +93,10 @@ function convertMs(ms) {
   const day = hour * 24; // 84 400 000
 
   
-  const days = Math.floor(ms / day);
-  const hours = Math.floor((ms % day) / hour);
-  const minutes = Math.floor(((ms % day) % hour) / minute);
-  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+  const days = addLeadingZero(Math.floor(ms / day));
+  const hours = addLeadingZero(Math.floor((ms % day) / hour));
+  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
 
   return { days, hours, minutes, seconds };
 };
