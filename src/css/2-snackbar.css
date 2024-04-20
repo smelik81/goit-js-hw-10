@@ -1,0 +1,56 @@
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 360px;
+}
+
+input[type="number"] {
+    border-radius: 4px;
+    border: 1px solid rgb(128, 128, 128);
+    height: 40px;
+}
+
+fieldset {
+    width: 360px;
+    padding: 0;
+    margin: 16px 0 0 0;
+     border-radius: 4px;
+     display: flex;
+}
+
+legend {
+    width: 45px;
+    margin-left: 28px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+   
+}
+
+fieldset label {
+   width: 104px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px 24px 8px 24px;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+button {
+    width: 360px;
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 8px;
+    background-color: rgb(78, 117, 255);
+    margin-top: 24px;
+    padding: 8px 99px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+}
