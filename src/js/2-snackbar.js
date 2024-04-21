@@ -14,15 +14,13 @@ function handleFormSubmit(event) {
 
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (state === 'fulfilled') {
-                resolve(delay);
-                console.log(`✅ Fulfilled promise in ${delay}ms`);
-            } else {
-                reject(delay);
-                console.log(`❌ Rejected promise in ${delay}ms`);
-            }
-        })
-    }, delay);
+          if (state === 'fulfilled') {
+            resolve(delay);
+          } else {
+            reject(delay);
+          }
+        }, delay);
+    });
 
 
     promise
