@@ -25,6 +25,11 @@ button {
     cursor: pointer;
 }
 
+button:not([disabled]) {
+    background-color: #4e75ff;
+    color: white;
+}
+
 .not-show {
     cursor: not-allowed;
 }

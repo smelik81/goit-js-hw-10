@@ -66,9 +66,6 @@ function showCountdawn() {
         console.log(differenceTime);
         if (differenceTime < 1000) {
             clearInterval(setIntervalId); 
-            btnElStart.disabled = false;
-             btnElStart.classList.remove('not-show');
-            inputEl.disabled = false;
         } 
     }, 1000);
 };

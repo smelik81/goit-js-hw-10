@@ -11,7 +11,6 @@ function handleFormSubmit(event) {
     const element = event.currentTarget.elements;
     const delay = Number(element.delay.value);
     const state = element.state.value;
-    console.log(state);
 
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
